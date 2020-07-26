@@ -29,13 +29,13 @@ public class Dancer extends Person {
     }
 
     @Override
-    protected void eat() {
-        System.out.println(getName() + " is a vegetarian.");
+    protected void learn() {
+        System.out.println(getName() + " has a dancing education");
     }
 
     @Override
-    protected void learn() {
-        System.out.println(getName() + " has a dancing education");
+    protected void eat() {
+        System.out.println(getName() + " is a vegetarian.");
     }
 
     @Override
