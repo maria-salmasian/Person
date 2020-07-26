@@ -1,3 +1,10 @@
 /.idea/
 *.iml
 /out/
+/production/ProjectPerson/META-INF/ProjectPerson.kotlin_module
+/production/ProjectPerson/.uml
+/production/ProjectPerson/Dancer.class
+/production/ProjectPerson/Person.class
+/production/ProjectPerson/PersonDemo.class
+/production/ProjectPerson/Programmer.class
+/production/ProjectPerson/Singer.class
