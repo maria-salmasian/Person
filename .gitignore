@@ -8,3 +8,17 @@
 /production/ProjectPerson/PersonDemo.class
 /production/ProjectPerson/Programmer.class
 /production/ProjectPerson/Singer.class
+/production/MainPerson/com/beyond/person/core/model/BasePerson.class
+/production/MainPerson/com/beyond/person/core/model/Dancer.class
+/production/MainPerson/com/beyond/person/core/model/Programmer.class
+/production/MainPerson/com/beyond/person/core/model/Singer.class
+/production/MainPerson/com/beyond/person/core/service/Factory/PersonFactory.class
+/production/MainPerson/com/beyond/person/core/service/implementation/DancerImpl.class
+/production/MainPerson/com/beyond/person/core/service/implementation/ProgrammerImpl.class
+/production/MainPerson/com/beyond/person/core/service/implementation/SingerImpl.class
+/production/MainPerson/com/beyond/person/core/service/interfaces/BasePersonAction.class
+/production/MainPerson/com/beyond/person/core/service/interfaces/DancerAction.class
+/production/MainPerson/com/beyond/person/core/service/interfaces/ProgrammerAction.class
+/production/MainPerson/com/beyond/person/core/service/interfaces/SingerAction.class
+/production/MainPerson/com/beyond/person/entrypoint/Main.class
+/production/MainPerson/META-INF/MainPerson.kotlin_module
