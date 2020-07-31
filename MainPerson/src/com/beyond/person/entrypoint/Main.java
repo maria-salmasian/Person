@@ -4,7 +4,7 @@ import com.beyond.person.core.model.BasePerson;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.model.Singer;
-import com.beyond.person.core.service.Factory.PersonFactory;
+import com.beyond.person.core.service.factory.PersonFactory;
 import com.beyond.person.core.service.implementation.DancerImpl;
 import com.beyond.person.core.service.implementation.ProgrammerImpl;
 import com.beyond.person.core.service.implementation.SingerImpl;

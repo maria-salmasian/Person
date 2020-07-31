@@ -1,4 +1,4 @@
-package com.beyond.person.core.service.Factory;
+package com.beyond.person.core.service.factory;
 
 import com.beyond.person.core.model.BasePerson;
 import com.beyond.person.core.model.Dancer;
