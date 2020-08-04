@@ -50,8 +50,8 @@ public class Main {
                     System.exit(0);
                 }
             }
-            catch (InvalidPersonException ez) {
-                System.out.println(ez.getMessage());
+            catch (InvalidPersonException e) {
+                System.out.println(e.getMessage());
                 count++;
             }
         }
