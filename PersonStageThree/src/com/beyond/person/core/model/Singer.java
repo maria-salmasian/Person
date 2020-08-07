@@ -1,5 +1,6 @@
 package com.beyond.person.core.model;
 
+import com.beyond.person.core.exception.InvalidFieldException;
 import com.beyond.person.core.exception.InvalidTypeException;
 import com.beyond.person.core.utils.SongType;
 
@@ -9,12 +10,13 @@ public class Singer extends BasePerson {
 
     /**
      * constructor for singer
+     *
      * @param name
      * @param lastName
      * @param bandName
      * @param designation
      */
-    public Singer(String name, String lastName, String bandName, String designation) {
+    public Singer(String name, String lastName, String bandName, String designation) throws InvalidFieldException {
 
         super(name, lastName);
         this.bandName = bandName;
@@ -29,17 +31,13 @@ public class Singer extends BasePerson {
         return songType;
     }
 
-    public void setDesignation(String designation) {
-        try{
-            if(designation.equalsIgnoreCase(String.valueOf(SongType.JAZZ)) || designation.equalsIgnoreCase(String.valueOf(SongType.POP))
-                    || designation.equalsIgnoreCase(String.valueOf(SongType.ROCK)))
-                this.designation = designation;
-            else{
-                throw new InvalidTypeException();
-            }
-        }
-        catch (InvalidTypeException e){
-            System.out.println(e.getMessage());
+    public void setDesignation(String designation) throws InvalidTypeException {
+
+        if (designation.equalsIgnoreCase(String.valueOf(SongType.JAZZ)) || designation.equalsIgnoreCase(String.valueOf(SongType.POP))
+                || designation.equalsIgnoreCase(String.valueOf(SongType.ROCK)))
+            this.designation = designation;
+        else {
+            throw new InvalidTypeException("Type not found");
         }
 
 

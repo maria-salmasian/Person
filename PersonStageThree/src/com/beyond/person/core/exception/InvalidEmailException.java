@@ -1,7 +1,7 @@
 package com.beyond.person.core.exception;
 
-public class InvalidEmailException extends RuntimeException {
-    public InvalidEmailException() {
-        super("Email not found!");
+public class InvalidEmailException extends Exception {
+    public InvalidEmailException(String message) {
+        super(message);
     }
 }

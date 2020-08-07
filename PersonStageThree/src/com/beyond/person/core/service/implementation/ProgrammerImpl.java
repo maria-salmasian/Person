@@ -1,5 +1,6 @@
 package com.beyond.person.core.service.implementation;
 
+import com.beyond.person.core.exception.InvalidFieldException;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.service.interfaces.ProgrammerAction;
 import com.beyond.person.core.utils.State;
@@ -15,7 +16,7 @@ public class ProgrammerImpl implements ProgrammerAction {
      * @param companyName
      * @param designation
      */
-    public ProgrammerImpl(String name, String lastName, String companyName, String designation) {
+    public ProgrammerImpl(String name, String lastName, String companyName, String designation) throws InvalidFieldException {
         programmer = new Programmer(name, lastName, companyName, designation);
 
     }

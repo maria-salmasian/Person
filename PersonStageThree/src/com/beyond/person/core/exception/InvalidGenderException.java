@@ -1,7 +1,7 @@
 package com.beyond.person.core.exception;
 
-public class InvalidGenderException extends RuntimeException {
-    public InvalidGenderException() {
-        super("Gender not found!");
+public class InvalidGenderException extends Exception {
+    public InvalidGenderException(String message) {
+        super(message);
     }
 }

@@ -1,8 +1,7 @@
 package com.beyond.person.core.exception;
 
-public class InvalidTypeException extends RuntimeException {
-    public InvalidTypeException() {
-        super("Type not supported");
-
+public class InvalidTypeException extends Exception {
+    public InvalidTypeException(String message) {
+        super(message);
     }
 }

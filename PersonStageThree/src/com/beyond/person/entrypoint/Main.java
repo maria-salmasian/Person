@@ -1,5 +1,6 @@
 package com.beyond.person.entrypoint;
 
+import com.beyond.person.core.exception.InvalidFieldException;
 import com.beyond.person.helper.InvalidPersonException;
 import com.beyond.person.helper.SetterClass;
 import com.beyond.person.helper.UserInput;
@@ -38,19 +39,16 @@ public class Main {
                         userInput.userInput(choice, name, lastName, designation);
                         SetterClass setQualities = new SetterClass();
                         setQualities.setPerson(name, lastName, designation, email, gender, nickname, age);
-                    }
-                    else {
+                    } else {
                         throw new InvalidPersonException("person not supported");
                     }
 
                     System.out.println();
-                }
-                else {
+                } else {
                     System.out.println("Bye!");
                     System.exit(0);
                 }
-            }
-            catch (InvalidPersonException e) {
+            } catch (InvalidPersonException | InvalidFieldException e) {
                 System.out.println(e.getMessage());
                 count++;
             }

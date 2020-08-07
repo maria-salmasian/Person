@@ -1,5 +1,6 @@
 package com.beyond.person.core.service.implementation;
 
+import com.beyond.person.core.exception.InvalidFieldException;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.service.interfaces.DancerAction;
 import com.beyond.person.core.utils.State;
@@ -15,7 +16,7 @@ public class DancerImpl implements DancerAction {
      * @param groupName
      * @param designation
      */
-    public DancerImpl(String name, String lastName, String groupName, String designation) {
+    public DancerImpl(String name, String lastName, String groupName, String designation) throws InvalidFieldException {
         dancer = new Dancer(name, lastName, groupName, designation);
 
     }

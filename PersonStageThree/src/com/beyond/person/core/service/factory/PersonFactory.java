@@ -1,5 +1,6 @@
 package com.beyond.person.core.service.factory;
 
+import com.beyond.person.core.exception.InvalidFieldException;
 import com.beyond.person.core.model.BasePerson;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.model.Programmer;
@@ -15,7 +16,7 @@ public class PersonFactory {
      * @param person
      * @return
      */
-    public static BasePersonAction getPersonType(BasePerson person) {
+    public static BasePersonAction getPersonType(BasePerson person) throws InvalidFieldException {
         if (person instanceof Dancer) {
             Dancer dancer = (Dancer)person;
             return new DancerImpl(dancer.getName(), dancer.getLastName(), dancer.getGroupName(), dancer.getDesignation());
