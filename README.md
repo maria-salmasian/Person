@@ -1,3 +1,3 @@
 # Person
 project with the following diagram
-![NEWUML](https://user-images.githubusercontent.com/67556986/89532585-11999200-d803-11ea-8f2a-cd95776055ca.png)
+![Untitled Document (2)](https://user-images.githubusercontent.com/67556986/89632116-be7f1800-d8b2-11ea-9bb0-f8ae06a239b6.png)

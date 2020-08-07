@@ -14,7 +14,7 @@ public class BasePerson {
     protected String designation;
     protected String gender;
     protected int age;
-    protected String email_regex = "^(.+)@(.+)$";
+    protected final String emailRegex = "^(.+)@(.+)$";
 
     /**
      * constructor for base person
@@ -64,7 +64,7 @@ public class BasePerson {
     }
 
     public void setEmail(String email) {
-        boolean b = email.matches(email_regex);
+        boolean b = email.matches(emailRegex);
         try {
             if (b == true)
                 this.email = email;
