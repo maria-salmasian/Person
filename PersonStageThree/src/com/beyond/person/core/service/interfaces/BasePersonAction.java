@@ -24,5 +24,4 @@ public interface BasePersonAction {
 
     void all();
 
-
 }

@@ -11,7 +11,7 @@ public class BasePerson {
     protected String designation;
     protected String gender;
     protected int age;
-    protected final String emailRegex = "^(.+)@(.+)$";
+    private final String emailRegex = "^(.+)@(.+)$";
 
     /**
      * constructor for base person
