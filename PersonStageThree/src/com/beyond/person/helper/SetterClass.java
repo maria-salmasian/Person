@@ -22,24 +22,12 @@ public class SetterClass {
 
         try {
             personCreated.setAge(age);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        try {
             personCreated.setNickname(nickname);
             personCreated.setDesignation(designation);
-        } catch (InvalidFieldException | InvalidTypeException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
             personCreated.setEmail(email);
-        } catch (InvalidEmailException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
             personCreated.setGender(gender);
-        } catch (InvalidGenderException e) {
+        } catch (InvalidFieldException | InvalidTypeException | InvalidEmailException |
+                InvalidGenderException | InvalidAgeException e) {
             System.out.println(e.getMessage());
         }
 

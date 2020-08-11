@@ -25,49 +25,44 @@ public class UserInput {
      */
     public void userInput(int choice, String name, String lastName, String designation) throws InvalidFieldException {
         Scanner enter = new Scanner(System.in);
-        switch (choice) {
-            case 1:
-                System.out.println("What group does the dancer dance in");
-                String groupName = enter.nextLine();
-                try {
-                    BasePerson dancer = new Dancer(name, lastName, groupName, designation);
-                    dancer.setDesignation(designation);
-                    DancerImpl dancerPerson = (DancerImpl) PersonFactory.getPersonType(dancer);
-                    dancerPerson.all();
-                } catch (InvalidTypeException e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
-            case 2:
-                System.out.println("What band does the singer sing in");
-                String bandName = enter.nextLine();
-                try {
-                    BasePerson singer = new Singer(name, lastName, bandName, designation);
-                    singer.setDesignation(designation);
-                    SingerImpl singerPerson = (SingerImpl) PersonFactory.getPersonType(singer);
-                    singerPerson.all();
-                } catch (InvalidTypeException e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
-
-            case 3:
-                System.out.println("What company does the programmer work for");
-                String companyName = enter.nextLine();
-                try {
-                    BasePerson programmer = new Programmer(name, lastName, companyName, designation);
-                    programmer.setDesignation(designation);
-                    ProgrammerImpl programmerPerson = (ProgrammerImpl) PersonFactory.getPersonType(programmer);
-                    programmerPerson.all();
-                } catch (InvalidTypeException e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
-
-
+        if (choice == 1) {
+            System.out.println("What group does the dancer dance in");
+            String groupName = enter.nextLine();
+            try {
+                BasePerson dancer = new Dancer(name, lastName, groupName, designation);
+                dancer.setDesignation(designation);
+                DancerImpl dancerPerson = (DancerImpl) PersonFactory.getPersonType(dancer);
+                dancerPerson.all();
+            } catch (InvalidTypeException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (choice == 2) {
+            System.out.println("What band does the singer sing in");
+            String bandName = enter.nextLine();
+            try {
+                BasePerson singer = new Singer(name, lastName, bandName, designation);
+                singer.setDesignation(designation);
+                SingerImpl singerPerson = (SingerImpl) PersonFactory.getPersonType(singer);
+                singerPerson.all();
+            } catch (InvalidTypeException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (choice == 3) {
+            System.out.println("What company does the programmer work for");
+            String companyName = enter.nextLine();
+            try {
+                BasePerson programmer = new Programmer(name, lastName, companyName, designation);
+                programmer.setDesignation(designation);
+                ProgrammerImpl programmerPerson = (ProgrammerImpl) PersonFactory.getPersonType(programmer);
+                programmerPerson.all();
+            } catch (InvalidTypeException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
 
     }
 
+
 }
+
