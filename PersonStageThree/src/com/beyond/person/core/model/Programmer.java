@@ -1,8 +1,7 @@
 package com.beyond.person.core.model;
 
-import com.beyond.person.core.exception.InvalidFieldException;
-import com.beyond.person.core.exception.InvalidTypeException;
-import com.beyond.person.core.utils.EngineerType;
+import com.beyond.person.core.exception.ValidationException;
+import com.beyond.person.core.utils.enumeration.EngineerType;
 
 public class Programmer extends BasePerson {
     protected String companyName;
@@ -16,7 +15,7 @@ public class Programmer extends BasePerson {
      * @param companyName
      * @param designation
      */
-    public Programmer(String name, String lastName, String companyName, String designation) throws InvalidFieldException {
+    public Programmer(String name, String lastName, String companyName, String designation) throws ValidationException {
         super(name, lastName);
         this.companyName = companyName;
         this.designation = designation;
@@ -30,12 +29,12 @@ public class Programmer extends BasePerson {
         return engineerType;
     }
 
-    public void setDesignation(String designation) throws InvalidTypeException {
+    public void setDesignation(String designation) throws ValidationException {
         if (designation.equalsIgnoreCase(String.valueOf(EngineerType.DATA)) || designation.equalsIgnoreCase(String.valueOf(EngineerType.HARDWARE))
                 || designation.equalsIgnoreCase(String.valueOf(EngineerType.SOFTWARE)))
             this.designation = designation;
         else {
-            throw new InvalidTypeException("Type not found");
+            throw new ValidationException("Type not found");
         }
 
     }

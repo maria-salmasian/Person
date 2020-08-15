@@ -1,9 +1,9 @@
 package com.beyond.person.core.service.interfaces;
 
 import com.beyond.person.core.model.BasePerson;
-import com.beyond.person.core.utils.State;
+import com.beyond.person.core.utils.enumeration.State;
 
-public interface BasePersonAction {
+public interface BasePersonActionService {
 
     /**
      * method walk same for all

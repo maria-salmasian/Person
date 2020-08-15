@@ -1,11 +1,11 @@
-package com.beyond.person.core.service.implementation;
+package com.beyond.person.core.service.impl;
 
-import com.beyond.person.core.exception.InvalidFieldException;
+import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Dancer;
-import com.beyond.person.core.service.interfaces.DancerAction;
-import com.beyond.person.core.utils.State;
+import com.beyond.person.core.service.interfaces.DancerActionService;
+import com.beyond.person.core.utils.enumeration.State;
 
-public class DancerImpl implements DancerAction {
+public class DancerActionServiceImpl implements DancerActionService {
     Dancer dancer;
     State state = State.NONE;
 
@@ -16,7 +16,7 @@ public class DancerImpl implements DancerAction {
      * @param groupName
      * @param designation
      */
-    public DancerImpl(String name, String lastName, String groupName, String designation) throws InvalidFieldException {
+    public DancerActionServiceImpl(String name, String lastName, String groupName, String designation) throws ValidationException {
         dancer = new Dancer(name, lastName, groupName, designation);
 
     }

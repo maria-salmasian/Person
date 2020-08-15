@@ -1,8 +1,7 @@
 package com.beyond.person.core.model;
 
-import com.beyond.person.core.exception.InvalidFieldException;
-import com.beyond.person.core.exception.InvalidTypeException;
-import com.beyond.person.core.utils.SongType;
+import com.beyond.person.core.exception.ValidationException;
+import com.beyond.person.core.utils.enumeration.SongType;
 
 public class Singer extends BasePerson {
     protected String bandName;
@@ -16,7 +15,7 @@ public class Singer extends BasePerson {
      * @param bandName
      * @param designation
      */
-    public Singer(String name, String lastName, String bandName, String designation) throws InvalidFieldException {
+    public Singer(String name, String lastName, String bandName, String designation) throws ValidationException {
 
         super(name, lastName);
         this.bandName = bandName;
@@ -31,13 +30,13 @@ public class Singer extends BasePerson {
         return songType;
     }
 
-    public void setDesignation(String designation) throws InvalidTypeException {
+    public void setDesignation(String designation) throws ValidationException {
 
         if (designation.equalsIgnoreCase(String.valueOf(SongType.JAZZ)) || designation.equalsIgnoreCase(String.valueOf(SongType.POP))
                 || designation.equalsIgnoreCase(String.valueOf(SongType.ROCK)))
             this.designation = designation;
         else {
-            throw new InvalidTypeException("Type not found");
+            throw new ValidationException("Type not found");
         }
 
 

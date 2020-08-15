@@ -5,9 +5,9 @@ import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.model.Singer;
 import com.beyond.person.core.service.factory.PersonFactory;
-import com.beyond.person.core.service.implementation.DancerImpl;
-import com.beyond.person.core.service.implementation.ProgrammerImpl;
-import com.beyond.person.core.service.implementation.SingerImpl;
+import com.beyond.person.core.service.impl.DancerImpl;
+import com.beyond.person.core.service.impl.ProgrammerImpl;
+import com.beyond.person.core.service.impl.SingerImpl;
 
 public class Main {
     public static void main(String[] args) {

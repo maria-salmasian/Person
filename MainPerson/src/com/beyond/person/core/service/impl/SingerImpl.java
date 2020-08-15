@@ -1,4 +1,4 @@
-package com.beyond.person.core.service.implementation;
+package com.beyond.person.core.service.impl;
 
 import com.beyond.person.core.model.Singer;
 import com.beyond.person.core.service.interfaces.SingerAction;

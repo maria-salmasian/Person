@@ -1,11 +1,11 @@
-package com.beyond.person.core.service.implementation;
+package com.beyond.person.core.service.impl;
 
-import com.beyond.person.core.exception.InvalidFieldException;
+import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Programmer;
-import com.beyond.person.core.service.interfaces.ProgrammerAction;
-import com.beyond.person.core.utils.State;
+import com.beyond.person.core.service.interfaces.ProgrammerActionService;
+import com.beyond.person.core.utils.enumeration.State;
 
-public class ProgrammerImpl implements ProgrammerAction {
+public class ProgrammerActionServiceImpl implements ProgrammerActionService {
     Programmer programmer;
     State state = State.NONE;
 
@@ -16,7 +16,7 @@ public class ProgrammerImpl implements ProgrammerAction {
      * @param companyName
      * @param designation
      */
-    public ProgrammerImpl(String name, String lastName, String companyName, String designation) throws InvalidFieldException {
+    public ProgrammerActionServiceImpl(String name, String lastName, String companyName, String designation) throws ValidationException {
         programmer = new Programmer(name, lastName, companyName, designation);
 
     }

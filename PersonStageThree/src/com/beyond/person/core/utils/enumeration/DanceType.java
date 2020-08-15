@@ -1,4 +1,4 @@
-package com.beyond.person.core.utils;
+package com.beyond.person.core.utils.enumeration;
 
 public enum DanceType {
     LATINO,

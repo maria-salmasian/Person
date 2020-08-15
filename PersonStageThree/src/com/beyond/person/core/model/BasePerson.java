@@ -1,7 +1,7 @@
 package com.beyond.person.core.model;
 
 import com.beyond.person.core.exception.*;
-import com.beyond.person.core.utils.Gender;
+import com.beyond.person.core.utils.enumeration.Gender;
 
 public class BasePerson {
     protected String name;
@@ -19,12 +19,12 @@ public class BasePerson {
      * @param name
      * @param lastName
      */
-    public BasePerson(String name, String lastName) throws InvalidFieldException {
+    public BasePerson(String name, String lastName) throws ValidationException {
         if (lengthCheck(name, lastName)) {
             this.name = name;
             this.lastName = lastName;
         } else {
-            throw new InvalidFieldException("String not supported");
+            throw new ValidationException("String not supported");
         }
     }
 
@@ -40,12 +40,12 @@ public class BasePerson {
         return nickname;
     }
 
-    public void setNickname(String nickname) throws InvalidFieldException {
+    public void setNickname(String nickname) throws ValidationException {
 
         if (0 < nickname.length() && nickname.length() < 255)
             this.nickname = nickname;
         else {
-            throw new InvalidFieldException("String not supported");
+            throw new ValidationException("String not supported");
         }
     }
 
@@ -53,11 +53,11 @@ public class BasePerson {
         return email;
     }
 
-    public void setEmail(String email) throws InvalidEmailException {
+    public void setEmail(String email) throws ValidationException {
         if (email.matches(emailRegex))
             this.email = email;
         else {
-            throw new InvalidEmailException("Email not found");
+            throw new ValidationException("Email not found");
         }
 
     }
@@ -66,11 +66,11 @@ public class BasePerson {
         return designation;
     }
 
-    public void setDesignation(String designation) throws InvalidFieldException, InvalidTypeException {
+    public void setDesignation(String designation) throws ValidationException {
         if (!designation.equals("") || designation.length() < 255)
             this.designation = designation;
         else {
-            throw new InvalidFieldException("String not supported!");
+            throw new ValidationException("String not supported!");
         }
     }
 
@@ -78,11 +78,11 @@ public class BasePerson {
         return gender;
     }
 
-    public void setGender(String gender) throws InvalidGenderException {
+    public void setGender(String gender) throws ValidationException {
         if (gender.equalsIgnoreCase(String.valueOf(Gender.FEMALE)) || gender.equalsIgnoreCase(String.valueOf(Gender.MALE)))
             this.gender = gender;
         else {
-            throw new InvalidGenderException("Gender not found");
+            throw new ValidationException("Gender not found");
         }
     }
 
@@ -102,12 +102,12 @@ public class BasePerson {
         return -1;
     }
 
-    public void setAge(String ageInput) throws InvalidAgeException {
+    public void setAge(String ageInput) throws ValidationException {
         int firstAge = ageValidity(ageInput);
         if (0 < firstAge && firstAge < 100)
             this.age = firstAge;
         else {
-            throw new InvalidAgeException("Invalid Age!");
+            throw new ValidationException("Invalid Age!");
         }
     }
 

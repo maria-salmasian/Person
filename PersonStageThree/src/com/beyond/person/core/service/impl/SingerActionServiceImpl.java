@@ -1,11 +1,11 @@
-package com.beyond.person.core.service.implementation;
+package com.beyond.person.core.service.impl;
 
-import com.beyond.person.core.exception.InvalidFieldException;
+import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Singer;
-import com.beyond.person.core.service.interfaces.SingerAction;
-import com.beyond.person.core.utils.State;
+import com.beyond.person.core.service.interfaces.SingerActionService;
+import com.beyond.person.core.utils.enumeration.State;
 
-public class SingerImpl implements SingerAction {
+public class SingerActionServiceImpl implements SingerActionService {
     Singer singer;
     State state = State.NONE;
 
@@ -16,7 +16,7 @@ public class SingerImpl implements SingerAction {
      * @param bandName
      * @param designation
      */
-    public SingerImpl(String name, String lastName, String bandName, String designation) throws InvalidFieldException {
+    public SingerActionServiceImpl(String name, String lastName, String bandName, String designation) throws ValidationException {
         singer = new Singer(name, lastName, bandName, designation);
 
     }
