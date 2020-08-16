@@ -1,7 +1,7 @@
 package com.beyond.person.helper;
 
 import com.beyond.person.core.exception.ValidationException;
-import com.beyond.person.core.utils.enumeration.People;
+import com.beyond.person.core.utils.enumeration.InputChoice;
 
 import java.util.Scanner;
 
@@ -23,9 +23,9 @@ public class Start {
             System.out.println("Or choose 4) exit to terminate the program");
             input = enter.nextLine();
             try {
-                if (!input.equals(People.EXIT.toString())) {
-                    if (input.equals(People.DANCER.toString()) || input.equals(People.SINGER.toString())
-                            || input.equals(People.PROGRAMMER.toString())) {
+                if (!input.equals(InputChoice.EXIT.toString())) {
+                    if (input.equals(InputChoice.DANCER.toString()) || input.equals(InputChoice.SINGER.toString())
+                            || input.equals(InputChoice.PROGRAMMER.toString())) {
                         int choice = Integer.parseInt(input);
                         System.out.println("Name:");
                         String name = enter.nextLine();

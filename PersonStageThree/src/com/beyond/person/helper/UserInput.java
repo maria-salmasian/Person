@@ -9,7 +9,7 @@ import com.beyond.person.core.service.factory.PersonFactory;
 import com.beyond.person.core.service.impl.DancerActionServiceImpl;
 import com.beyond.person.core.service.impl.ProgrammerActionServiceImpl;
 import com.beyond.person.core.service.impl.SingerActionServiceImpl;
-import com.beyond.person.core.utils.enumeration.People;
+import com.beyond.person.core.utils.enumeration.InputChoice;
 
 import java.util.Scanner;
 
@@ -24,11 +24,11 @@ public class UserInput {
      * @param designation
      */
     public void userInput(int choice, String name, String lastName, String designation) {
-        if (choice == Integer.parseInt(People.DANCER.toString())) {
+        if (choice == Integer.parseInt(InputChoice.DANCER.toString())) {
             dancerInput(name, lastName, designation);
-        } else if (choice == Integer.parseInt(People.SINGER.toString())) {
+        } else if (choice == Integer.parseInt(InputChoice.SINGER.toString())) {
             singerInput(name, lastName, designation);
-        } else if (choice == Integer.parseInt(People.PROGRAMMER.toString())) {
+        } else if (choice == Integer.parseInt(InputChoice.PROGRAMMER.toString())) {
            programmerInput(name, lastName, designation);
         }
 

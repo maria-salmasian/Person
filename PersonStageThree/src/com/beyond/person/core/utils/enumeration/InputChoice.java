@@ -1,6 +1,6 @@
 package com.beyond.person.core.utils.enumeration;
 
-public enum People {
+public enum InputChoice {
     DANCER{
         public String toString(){
             return "1";

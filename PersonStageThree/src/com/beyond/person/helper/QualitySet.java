@@ -22,16 +22,12 @@ public class QualitySet {
                           String gender, String nickname, String age) throws ValidationException {
 
         BasePerson personCreated = new BasePerson(name, lastName);
+        personCreated.setAge(age);
+        personCreated.setNickname(nickname);
+        personCreated.setDesignation(designation);
+        personCreated.setEmail(email);
+        personCreated.setGender(gender);
 
-        try {
-            personCreated.setAge(age);
-            personCreated.setNickname(nickname);
-            personCreated.setDesignation(designation);
-            personCreated.setEmail(email);
-            personCreated.setGender(gender);
-        } catch (ValidationException e) {
-            System.out.println(e.getMessage());
-        }
 
 
     }
