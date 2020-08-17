@@ -24,7 +24,7 @@ public class BasePerson {
             this.name = name;
             this.lastName = lastName;
         } else {
-            throw new ValidationException("String not supported");
+            throw new ValidationException("Name or Surname not supported");
         }
     }
 
@@ -40,18 +40,27 @@ public class BasePerson {
         return nickname;
     }
 
+    private String getEmail() {
+        return email;
+    }
+
+    private String getGender() {
+        return gender;
+    }
+
+    private int getAge() {
+        return age;
+    }
+
     public void setNickname(String nickname) throws ValidationException {
 
         if (0 < nickname.length() && nickname.length() < 255)
             this.nickname = nickname;
         else {
-            throw new ValidationException("String not supported");
+            throw new ValidationException("Nickname not supported");
         }
     }
 
-    private String getEmail() {
-        return email;
-    }
 
     public void setEmail(String email) throws ValidationException {
         if (email.matches(emailRegex))
@@ -74,9 +83,6 @@ public class BasePerson {
         }
     }
 
-    private String getGender() {
-        return gender;
-    }
 
     public void setGender(String gender) throws ValidationException {
         if (gender.equalsIgnoreCase(String.valueOf(Gender.FEMALE)) || gender.equalsIgnoreCase(String.valueOf(Gender.MALE)))
@@ -84,11 +90,6 @@ public class BasePerson {
         else {
             throw new ValidationException("Gender not found");
         }
-    }
-
-
-    private int getAge() {
-        return age;
     }
 
     private int ageValidity(String ageInput) {

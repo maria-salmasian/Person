@@ -18,7 +18,7 @@ public class Dancer extends BasePerson {
     public Dancer(String name, String lastName, String groupName, String designation) throws ValidationException {
         super(name, lastName);
         this.groupName = groupName;
-        this.designation = designation;
+        this.designation =designation;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class Dancer extends BasePerson {
                 || designation.equalsIgnoreCase(String.valueOf(DanceType.CONTEMPORARY)))
             this.designation = designation;
         else {
-            throw new ValidationException("Type not found");
+            throw new ValidationException("Dance type not found");
         }
 
 
@@ -40,5 +40,6 @@ public class Dancer extends BasePerson {
     private String getDanceType() {
         return danceType;
     }
+
 
 }

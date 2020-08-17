@@ -36,7 +36,7 @@ public class Singer extends BasePerson {
                 || designation.equalsIgnoreCase(String.valueOf(SongType.ROCK)))
             this.designation = designation;
         else {
-            throw new ValidationException("Type not found");
+            throw new ValidationException("Song type not found");
         }
 
 

@@ -46,7 +46,9 @@ public class Start {
                         QualitySet setQualities = new QualitySet();
                         setQualities.setPerson(name, lastName, designation, email, gender, nickname, age);
                     } else {
+                        count++;
                         throw new ValidationException("person not supported");
+
                     }
 
                     System.out.println();
@@ -56,7 +58,6 @@ public class Start {
                 }
             } catch (ValidationException e) {
                 System.out.println(e.getMessage());
-                count++;
             }
         }
         System.out.println("Three invalid inputs! Program terminates.");
