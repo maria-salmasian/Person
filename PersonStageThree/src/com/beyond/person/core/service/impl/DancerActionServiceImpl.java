@@ -2,7 +2,7 @@ package com.beyond.person.core.service.impl;
 
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Dancer;
-import com.beyond.person.core.service.interfaces.DancerActionService;
+import com.beyond.person.core.service.DancerActionService;
 import com.beyond.person.core.utils.enumeration.State;
 
 public class DancerActionServiceImpl implements DancerActionService {
@@ -22,18 +22,14 @@ public class DancerActionServiceImpl implements DancerActionService {
     }
 
 
-    /**
-     * method dancing only for dancer from interface DancerAction
-     */
+
     @Override
     public void dancing() {
         System.out.println(dancer.getName() + " dances " + dancer.getDesignation() + " at " + dancer.getGroupName());
         System.out.println(dancer.getName() + " dances only after eating");
     }
 
-    /**
-     * eat overriden
-     */
+
     @Override
     public void eat() {
         state = State.EATEN;
@@ -41,9 +37,7 @@ public class DancerActionServiceImpl implements DancerActionService {
 
     }
 
-    /**
-     * learn overriden
-     */
+
     @Override
     public void learn() {
         state = State.LEARNT;
@@ -51,9 +45,7 @@ public class DancerActionServiceImpl implements DancerActionService {
 
     }
 
-    /**
-     * all methods of dancer in one
-     */
+
     @Override
     public void all() {
         learn();

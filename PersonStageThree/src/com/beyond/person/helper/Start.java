@@ -1,7 +1,7 @@
 package com.beyond.person.helper;
 
 import com.beyond.person.core.exception.ValidationException;
-import com.beyond.person.core.utils.enumeration.InputChoice;
+import com.beyond.person.helper.enumerations.InputChoice;
 
 import java.util.Scanner;
 
@@ -15,18 +15,18 @@ public class Start {
     public void start() {
         int count = 0;
         int availableInputs = 3;
-        String input = "";
+        int input;
         Scanner enter = new Scanner(System.in);
         System.out.println("Hello! Let's create a person");
         while (count < availableInputs) {
             System.out.println("What kind of person do you want to create? 1) dancer  2) singer  3) programmer ");
             System.out.println("Or choose 4) exit to terminate the program");
-            input = enter.nextLine();
+            input = enter.nextInt();
             try {
-                if (!input.equals(InputChoice.EXIT.toString())) {
-                    if (input.equals(InputChoice.DANCER.toString()) || input.equals(InputChoice.SINGER.toString())
-                            || input.equals(InputChoice.PROGRAMMER.toString())) {
-                        int choice = Integer.parseInt(input);
+                if (input != (InputChoice.EXIT.getId())) {
+                    if (input == (InputChoice.DANCER.getId()) || input == (InputChoice.SINGER.getId())
+                            || input == (InputChoice.PROGRAMMER.getId())) {
+                        enter.nextLine();
                         System.out.println("Name:");
                         String name = enter.nextLine();
                         System.out.println("Last Name:");
@@ -42,12 +42,12 @@ public class Start {
                         System.out.println("Age:");
                         String age = enter.nextLine();
                         UserInput userInput = new UserInput();
-                        userInput.userInput(choice, name, lastName, designation);
+                        userInput.userInput(input, name, lastName, designation);
                         QualitySet setQualities = new QualitySet();
                         setQualities.setPerson(name, lastName, designation, email, gender, nickname, age);
                     } else {
                         count++;
-                        throw new ValidationException("person not supported");
+                        throw new ValidationException("Invalid person type");
 
                     }
 

@@ -2,7 +2,7 @@ package com.beyond.person.core.service.impl;
 
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Singer;
-import com.beyond.person.core.service.interfaces.SingerActionService;
+import com.beyond.person.core.service.SingerActionService;
 import com.beyond.person.core.utils.enumeration.State;
 
 public class SingerActionServiceImpl implements SingerActionService {
@@ -21,9 +21,7 @@ public class SingerActionServiceImpl implements SingerActionService {
 
     }
 
-    /**
-     * eat overriden
-     */
+
     @Override
     public void eat() {
         state = State.EATEN;
@@ -31,18 +29,14 @@ public class SingerActionServiceImpl implements SingerActionService {
 
     }
 
-    /**
-     * learn overriden
-     */
+
     @Override
     public void learn() {
         state = State.LEARNT;
         System.out.println(singer.getName() + " has a singing Education");
     }
 
-    /**
-     * method singing from the interface SingerAction
-     */
+
     @Override
     public void singing() {
         System.out.println(singer.getName() + " plays " + singer.getDesignation() + " at " + singer.getBandName());

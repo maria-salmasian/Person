@@ -15,16 +15,15 @@ public class BasePerson {
 
     /**
      * constructor for base person
-     *
      * @param name
      * @param lastName
      */
     public BasePerson(String name, String lastName) throws ValidationException {
-        if (lengthCheck(name, lastName)) {
+        if (lengthCheck(name) && lengthCheck(lastName)) {
             this.name = name;
             this.lastName = lastName;
         } else {
-            throw new ValidationException("Name or Surname not supported");
+            throw new ValidationException("Invalid Name or Surname");
         }
     }
 
@@ -52,12 +51,16 @@ public class BasePerson {
         return age;
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
     public void setNickname(String nickname) throws ValidationException {
 
-        if (0 < nickname.length() && nickname.length() < 255)
+        if (lengthCheck(nickname))
             this.nickname = nickname;
         else {
-            throw new ValidationException("Nickname not supported");
+            throw new ValidationException("Invalid Nickname ");
         }
     }
 
@@ -66,20 +69,16 @@ public class BasePerson {
         if (email.matches(emailRegex))
             this.email = email;
         else {
-            throw new ValidationException("Email not found");
+            throw new ValidationException("Invalid Email ");
         }
 
     }
 
-    public String getDesignation() {
-        return designation;
-    }
-
     public void setDesignation(String designation) throws ValidationException {
-        if (!designation.equals("") || designation.length() < 255)
+        if (lengthCheck(designation))
             this.designation = designation;
         else {
-            throw new ValidationException("String not supported!");
+            throw new ValidationException("Invalid Designation!");
         }
     }
 
@@ -88,19 +87,8 @@ public class BasePerson {
         if (gender.equalsIgnoreCase(String.valueOf(Gender.FEMALE)) || gender.equalsIgnoreCase(String.valueOf(Gender.MALE)))
             this.gender = gender;
         else {
-            throw new ValidationException("Gender not found");
+            throw new ValidationException("Invalid Gender");
         }
-    }
-
-    private int ageValidity(String ageInput) {
-        try {
-            int firstAge = Integer.parseInt(ageInput);
-            return firstAge;
-
-        } catch (NumberFormatException e) {
-            System.out.println("age is supposed to be a number");
-        }
-        return -1;
     }
 
     public void setAge(String ageInput) throws ValidationException {
@@ -112,9 +100,23 @@ public class BasePerson {
         }
     }
 
-    private boolean lengthCheck(String name, String lastName) {
+
+    private int ageValidity(String ageInput) {
+        try {
+            int firstAge = Integer.parseInt(ageInput);
+            return firstAge;
+
+        } catch (NumberFormatException e) {
+            System.out.println("age is supposed to be a number");
+            System.out.println(e.getMessage());
+        }
+        return -1;
+    }
+
+
+    private boolean lengthCheck(String string) {
         boolean checked = false;
-        if (0 < name.length() && name.length() < 255 && 0 < lastName.length() && lastName.length() < 255)
+        if (0 < string.length() && string.length() < 255)
             checked = true;
         return checked;
     }

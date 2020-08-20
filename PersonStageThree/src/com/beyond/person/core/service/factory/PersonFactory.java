@@ -8,7 +8,7 @@ import com.beyond.person.core.model.Singer;
 import com.beyond.person.core.service.impl.DancerActionServiceImpl;
 import com.beyond.person.core.service.impl.ProgrammerActionServiceImpl;
 import com.beyond.person.core.service.impl.SingerActionServiceImpl;
-import com.beyond.person.core.service.interfaces.BasePersonActionService;
+import com.beyond.person.core.service.BasePersonActionService;
 
 public class PersonFactory {
     /**
@@ -33,7 +33,7 @@ public class PersonFactory {
         }
 
         else
-            throw new ValidationException("not found");
+            throw new ValidationException("Invalid Person Type");
 
     }
 

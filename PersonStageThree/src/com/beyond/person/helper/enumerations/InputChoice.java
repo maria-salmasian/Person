@@ -1,27 +1,38 @@
-package com.beyond.person.core.utils.enumeration;
+package com.beyond.person.helper.enumerations;
 
 public enum InputChoice {
-    DANCER{
+DANCER(1){
         public String toString(){
             return "1";
         }
     },
 
-    SINGER{
+    SINGER(2){
         public String toString(){
             return "2";
         }
     },
 
-    PROGRAMMER{
+    PROGRAMMER(3){
         public String toString(){
             return "3";
         }
     },
 
-    EXIT{
+    EXIT(4){
         public String toString(){
             return "4";
         }
     };
+
+    private int id;
+    InputChoice(int id) {
+        this.id =id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+
 }

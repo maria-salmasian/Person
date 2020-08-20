@@ -9,7 +9,7 @@ import com.beyond.person.core.service.factory.PersonFactory;
 import com.beyond.person.core.service.impl.DancerActionServiceImpl;
 import com.beyond.person.core.service.impl.ProgrammerActionServiceImpl;
 import com.beyond.person.core.service.impl.SingerActionServiceImpl;
-import com.beyond.person.core.utils.enumeration.InputChoice;
+import com.beyond.person.helper.enumerations.InputChoice;
 
 import java.util.Scanner;
 

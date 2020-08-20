@@ -34,7 +34,7 @@ public class Programmer extends BasePerson {
                 || designation.equalsIgnoreCase(String.valueOf(EngineerType.SOFTWARE)))
             this.designation = designation;
         else {
-            throw new ValidationException("Engineer type not found");
+            throw new ValidationException("Invalid Engineer type ");
         }
 
     }

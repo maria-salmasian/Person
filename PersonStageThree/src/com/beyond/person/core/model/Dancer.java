@@ -27,7 +27,7 @@ public class Dancer extends BasePerson {
                 || designation.equalsIgnoreCase(String.valueOf(DanceType.CONTEMPORARY)))
             this.designation = designation;
         else {
-            throw new ValidationException("Dance type not found");
+            throw new ValidationException("Invalid Dance type");
         }
 
 
