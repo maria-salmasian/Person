@@ -3,6 +3,7 @@ package com.beyond.person.core.service.impl;
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.service.DancerActionService;
+import com.beyond.person.core.utils.enumeration.DanceType;
 import com.beyond.person.core.utils.enumeration.State;
 
 public class DancerActionServiceImpl implements DancerActionService {
@@ -17,15 +18,17 @@ public class DancerActionServiceImpl implements DancerActionService {
      * @param designation
      */
     public DancerActionServiceImpl(String name, String lastName, String groupName, String designation) throws ValidationException {
-        dancer = new Dancer(name, lastName, groupName, designation);
+        dancer = new Dancer(name, lastName, groupName);
+        dancer.setDesignation(designation);
 
     }
 
 
 
     @Override
-    public void dancing() {
-        System.out.println(dancer.getName() + " dances " + dancer.getDesignation() + " at " + dancer.getGroupName());
+    public void dancing() throws ValidationException {
+
+        System.out.println(dancer.getName() + " dances " + (DanceType.getById(Integer.parseInt(dancer.getDesignation()))).name().toLowerCase()+ " at " + dancer.getGroupName());
         System.out.println(dancer.getName() + " dances only after eating");
     }
 
@@ -47,7 +50,7 @@ public class DancerActionServiceImpl implements DancerActionService {
 
 
     @Override
-    public void all() {
+    public void all() throws ValidationException {
         learn();
         eat();
         dancing();

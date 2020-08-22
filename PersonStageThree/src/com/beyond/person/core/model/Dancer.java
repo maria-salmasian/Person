@@ -3,9 +3,11 @@ package com.beyond.person.core.model;
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.utils.enumeration.DanceType;
 
+
 public class Dancer extends BasePerson {
     private String groupName;
     protected String danceType;
+    protected DanceType designation;
 
     /**
      * constructor for dancer
@@ -13,23 +15,18 @@ public class Dancer extends BasePerson {
      * @param name
      * @param lastName
      * @param groupName
-     * @param designation
      */
-    public Dancer(String name, String lastName, String groupName, String designation) throws ValidationException {
+    public Dancer(String name, String lastName, String groupName) throws ValidationException {
         super(name, lastName);
         this.groupName = groupName;
-        this.designation =designation;
+
     }
 
-    @Override
-    public void setDesignation(String designation) throws ValidationException {
-        if (designation.equalsIgnoreCase(String.valueOf(DanceType.LATINO)) || designation.equalsIgnoreCase(String.valueOf(DanceType.ARMENIAN))
-                || designation.equalsIgnoreCase(String.valueOf(DanceType.CONTEMPORARY)))
-            this.designation = designation;
-        else {
-            throw new ValidationException("Invalid Dance type");
-        }
 
+    public void setDesignation(String designation) throws ValidationException {
+        int genderId = numberValidity(designation);
+        DanceType type = DanceType.getById(genderId);
+        this.designation = type;
 
     }
 
@@ -41,5 +38,7 @@ public class Dancer extends BasePerson {
         return danceType;
     }
 
-
+    public String getDesignation() {
+        return designation.toString();
+    }
 }

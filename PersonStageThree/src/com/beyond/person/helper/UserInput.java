@@ -1,7 +1,6 @@
 package com.beyond.person.helper;
 
 import com.beyond.person.core.exception.ValidationException;
-import com.beyond.person.core.model.BasePerson;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.model.Singer;
@@ -11,9 +10,11 @@ import com.beyond.person.core.service.impl.ProgrammerActionServiceImpl;
 import com.beyond.person.core.service.impl.SingerActionServiceImpl;
 import com.beyond.person.helper.enumerations.InputChoice;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInput {
+    Scanner enter = new Scanner(System.in);
 
     /**
      * method for creating the person needed and preforming the actions needed
@@ -21,15 +22,19 @@ public class UserInput {
      * @param choice
      * @param name
      * @param lastName
-     * @param designation
      */
-    public void userInput(int choice, String name, String lastName, String designation) {
-        if (choice == Integer.parseInt(InputChoice.DANCER.toString())) {
-            dancerInput(name, lastName, designation);
-        } else if (choice == Integer.parseInt(InputChoice.SINGER.toString())) {
-            singerInput(name, lastName, designation);
-        } else if (choice == Integer.parseInt(InputChoice.PROGRAMMER.toString())) {
-           programmerInput(name, lastName, designation);
+
+
+    public void userInput(InputChoice choice, String name, String lastName) {
+        if (choice.equals(InputChoice.DANCER)) {
+            Dancer dancer = dancerInput(name, lastName);
+
+        } else if (choice.equals(InputChoice.SINGER)) {
+            Singer singer = singerInput(name, lastName);
+
+        } else if (choice.equals(InputChoice.PROGRAMMER)) {
+            Programmer programmer = programmerInput(name, lastName);
+
         }
 
     }
@@ -37,62 +42,101 @@ public class UserInput {
 
     /**
      * used in the method above, for making the dancer action and checking the validation of designation
+     *
      * @param name
      * @param lastName
-     * @param designation
      */
-    private void dancerInput(String name, String lastName, String designation) {
-        Scanner enter = new Scanner(System.in);
+    private Dancer dancerInput(String name, String lastName) {
+        System.out.println("Nickname:");
+        String nickname = enter.nextLine();
+        System.out.println("Gender: 1) female 2) male");
+        String gender = enter.nextLine();
+        System.out.println("Email:");
+        String email = enter.nextLine();
+        System.out.println("Age:");
+        String age = enter.nextLine();
+        System.out.println("Designation: 1) latino 2) contemporary 3) armenian");
+        String designation = enter.nextLine();
         System.out.println("What group does the dancer dance in");
         String groupName = enter.nextLine();
         try {
-            BasePerson dancer = new Dancer(name, lastName, groupName, designation);
+            Dancer dancer = new Dancer(name, lastName, groupName);
             dancer.setDesignation(designation);
+            QualitySet set = new QualitySet();
+            set.setPerson(designation, email, gender, nickname, age, dancer);
             DancerActionServiceImpl dancerPerson = (DancerActionServiceImpl) PersonFactory.getPersonType(dancer);
             dancerPerson.all();
+            return dancer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     /**
-     *  used in the method above, for making the singer action and checking the validation of designation
+     * used in the method above, for making the singer action and checking the validation of designation
+     *
      * @param name
      * @param lastName
-     * @param designation
      */
-    private void singerInput(String name, String lastName, String designation) {
-        Scanner enter = new Scanner(System.in);
+    private Singer singerInput(String name, String lastName) {
+        System.out.println("Nickname:");
+        String nickname = enter.nextLine();
+        System.out.println("Gender: 1) female 2) male");
+        String gender = enter.nextLine();
+        System.out.println("Email:");
+        String email = enter.nextLine();
+        System.out.println("Age:");
+        String age = enter.nextLine();
+        System.out.println("Designation: 1) jazz 2) pop 3) rock ");
+        String designation = enter.nextLine();
         System.out.println("What band does the singer sing in");
         String bandName = enter.nextLine();
         try {
-            BasePerson singer = new Singer(name, lastName, bandName, designation);
+            Singer singer = new Singer(name, lastName, bandName);
             singer.setDesignation(designation);
+            QualitySet set = new QualitySet();
+            set.setPerson(designation, email, gender, nickname, age, singer);
             SingerActionServiceImpl singerPerson = (SingerActionServiceImpl) PersonFactory.getPersonType(singer);
             singerPerson.all();
+            return singer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     /**
-     *  used in the method above, for making the programmer action and checking the validation of designation
+     * used in the method above, for making the programmer action and checking the validation of designation
+     *
      * @param name
      * @param lastName
-     * @param designation
      */
-    private void programmerInput(String name, String lastName, String designation) {
-        Scanner enter = new Scanner(System.in);
+    private Programmer programmerInput(String name, String lastName) {
+        System.out.println("Nickname:");
+        String nickname = enter.nextLine();
+        System.out.println("Gender: 1) female 2) male");
+        String gender = enter.nextLine();
+        System.out.println("Email:");
+        String email = enter.nextLine();
+        System.out.println("Age:");
+        String age = enter.nextLine();
+        System.out.println("Designation: 1) software 2) hardware 3) data");
+        String designation = enter.nextLine();
         System.out.println("What company does the programmer work for");
         String companyName = enter.nextLine();
         try {
-            BasePerson programmer = new Programmer(name, lastName, companyName, designation);
+            Programmer programmer = new Programmer(name, lastName, companyName);
             programmer.setDesignation(designation);
+            QualitySet set = new QualitySet();
+            set.setPerson(designation, email, gender, nickname, age, programmer);
             ProgrammerActionServiceImpl programmerPerson = (ProgrammerActionServiceImpl) PersonFactory.getPersonType(programmer);
             programmerPerson.all();
+            return programmer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
 }

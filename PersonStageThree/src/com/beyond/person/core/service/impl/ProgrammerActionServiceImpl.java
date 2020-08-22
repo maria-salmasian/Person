@@ -3,6 +3,7 @@ package com.beyond.person.core.service.impl;
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.service.ProgrammerActionService;
+import com.beyond.person.core.utils.enumeration.EngineerType;
 import com.beyond.person.core.utils.enumeration.State;
 
 public class ProgrammerActionServiceImpl implements ProgrammerActionService {
@@ -17,7 +18,8 @@ public class ProgrammerActionServiceImpl implements ProgrammerActionService {
      * @param designation
      */
     public ProgrammerActionServiceImpl(String name, String lastName, String companyName, String designation) throws ValidationException {
-        programmer = new Programmer(name, lastName, companyName, designation);
+        programmer = new Programmer(name, lastName, companyName);
+        programmer.setDesignation(designation);
 
     }
 
@@ -38,13 +40,13 @@ public class ProgrammerActionServiceImpl implements ProgrammerActionService {
 
 
     @Override
-    public void coding() {
-        System.out.println(programmer.getName() + " works as " + programmer.getDesignation() + " at " + programmer.getCompanyName() + " Codes after learning");
+    public void coding() throws ValidationException {
+        System.out.println(programmer.getName() + " works as " + (EngineerType.getById(Integer.parseInt(programmer.getDesignation()))).name().toLowerCase() + " engineer at " + programmer.getCompanyName() + " Codes after learning");
     }
 
 
     @Override
-    public void all() {
+    public void all() throws ValidationException {
         eat();
         learn();
         coding();

@@ -8,13 +8,14 @@ public class BasePerson {
     protected String lastName;
     protected String nickname;
     protected String email;
+    protected Gender gender;
     protected String designation;
-    protected String gender;
     protected int age;
     private final String emailRegex = "^(.+)@(.+)$";
 
     /**
      * constructor for base person
+     *
      * @param name
      * @param lastName
      */
@@ -43,7 +44,7 @@ public class BasePerson {
         return email;
     }
 
-    private String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -51,9 +52,6 @@ public class BasePerson {
         return age;
     }
 
-    public String getDesignation() {
-        return designation;
-    }
 
     public void setNickname(String nickname) throws ValidationException {
 
@@ -84,15 +82,13 @@ public class BasePerson {
 
 
     public void setGender(String gender) throws ValidationException {
-        if (gender.equalsIgnoreCase(String.valueOf(Gender.FEMALE)) || gender.equalsIgnoreCase(String.valueOf(Gender.MALE)))
-            this.gender = gender;
-        else {
-            throw new ValidationException("Invalid Gender");
-        }
+        int genderId = numberValidity(gender);
+        Gender x = Gender.getById(genderId);
+        this.gender = x;
     }
 
     public void setAge(String ageInput) throws ValidationException {
-        int firstAge = ageValidity(ageInput);
+        int firstAge = numberValidity(ageInput);
         if (0 < firstAge && firstAge < 100)
             this.age = firstAge;
         else {
@@ -101,14 +97,13 @@ public class BasePerson {
     }
 
 
-    private int ageValidity(String ageInput) {
+    int numberValidity(String input) {
         try {
-            int firstAge = Integer.parseInt(ageInput);
-            return firstAge;
+            int num = Integer.parseInt(input);
+            return num;
 
         } catch (NumberFormatException e) {
-            System.out.println("age is supposed to be a number");
-            System.out.println(e.getMessage());
+            System.out.println("Invalid number input");
         }
         return -1;
     }
@@ -120,4 +115,5 @@ public class BasePerson {
             checked = true;
         return checked;
     }
+
 }

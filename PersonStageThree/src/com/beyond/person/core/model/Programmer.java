@@ -6,6 +6,7 @@ import com.beyond.person.core.utils.enumeration.EngineerType;
 public class Programmer extends BasePerson {
     protected String companyName;
     protected String engineerType;
+    protected EngineerType designation;
 
     /**
      * constructor for programmer
@@ -13,12 +14,11 @@ public class Programmer extends BasePerson {
      * @param name
      * @param lastName
      * @param companyName
-     * @param designation
      */
-    public Programmer(String name, String lastName, String companyName, String designation) throws ValidationException {
+    public Programmer(String name, String lastName, String companyName) throws ValidationException {
         super(name, lastName);
         this.companyName = companyName;
-        this.designation = designation;
+
     }
 
     public String getCompanyName() {
@@ -30,12 +30,12 @@ public class Programmer extends BasePerson {
     }
 
     public void setDesignation(String designation) throws ValidationException {
-        if (designation.equalsIgnoreCase(String.valueOf(EngineerType.DATA)) || designation.equalsIgnoreCase(String.valueOf(EngineerType.HARDWARE))
-                || designation.equalsIgnoreCase(String.valueOf(EngineerType.SOFTWARE)))
-            this.designation = designation;
-        else {
-            throw new ValidationException("Invalid Engineer type ");
-        }
+        int genderId = numberValidity(designation);
+        EngineerType type = EngineerType.getById(genderId);
+        this.designation = type;
 
+    }
+    public String getDesignation() {
+        return designation.toString();
     }
 }

@@ -3,6 +3,8 @@ package com.beyond.person.core.service.impl;
 import com.beyond.person.core.exception.ValidationException;
 import com.beyond.person.core.model.Singer;
 import com.beyond.person.core.service.SingerActionService;
+import com.beyond.person.core.utils.enumeration.DanceType;
+import com.beyond.person.core.utils.enumeration.SongType;
 import com.beyond.person.core.utils.enumeration.State;
 
 public class SingerActionServiceImpl implements SingerActionService {
@@ -11,13 +13,15 @@ public class SingerActionServiceImpl implements SingerActionService {
 
     /**
      * constructor for singer impl
+     *
      * @param name
      * @param lastName
      * @param bandName
      * @param designation
      */
     public SingerActionServiceImpl(String name, String lastName, String bandName, String designation) throws ValidationException {
-        singer = new Singer(name, lastName, bandName, designation);
+        singer = new Singer(name, lastName, bandName);
+        singer.setDesignation(designation);
 
     }
 
@@ -38,13 +42,13 @@ public class SingerActionServiceImpl implements SingerActionService {
 
 
     @Override
-    public void singing() {
-        System.out.println(singer.getName() + " plays " + singer.getDesignation() + " at " + singer.getBandName());
+    public void singing() throws ValidationException {
+        System.out.println(singer.getName() + " plays " + (SongType.getById(Integer.parseInt(singer.getDesignation()))).name().toLowerCase() + " at " + singer.getBandName());
         System.out.println("And can only play after eating and walking, and can only sing after eating");
     }
 
     @Override
-    public void all() {
+    public void all() throws ValidationException {
         learn();
         eat();
         singing();

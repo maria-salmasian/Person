@@ -13,12 +13,13 @@ import com.beyond.person.core.service.BasePersonActionService;
 public class PersonFactory {
     /**
      * method for generating person of a type
+     *
      * @param person
      * @return
      */
     public static BasePersonActionService getPersonType(BasePerson person) throws ValidationException {
         if (person instanceof Dancer) {
-            Dancer dancer = (Dancer)person;
+            Dancer dancer = (Dancer) person;
             return new DancerActionServiceImpl(dancer.getName(), dancer.getLastName(), dancer.getGroupName(), dancer.getDesignation());
 
         } else if (person instanceof Singer) {
@@ -30,9 +31,7 @@ public class PersonFactory {
             Programmer programmer = (Programmer) person;
             return new ProgrammerActionServiceImpl(programmer.getName(), programmer.getLastName(), programmer.getCompanyName(), programmer.getDesignation());
 
-        }
-
-        else
+        } else
             throw new ValidationException("Invalid Person Type");
 
     }
