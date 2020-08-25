@@ -3,7 +3,6 @@ package com.beyond.person.helper;
 import com.beyond.person.core.exception.*;
 import com.beyond.person.core.model.BasePerson;
 
-import java.util.ArrayList;
 
 /**
  * provides a method that will set the qualities through the setters
@@ -19,7 +18,7 @@ public class QualitySet {
      * @param nickname
      * @param age
      */
-    public void setPerson(int id, String designation, String email,
+    public void setPerson( String designation, String email,
                           String gender, String nickname, String age, BasePerson personCreated) throws ValidationException {
         personCreated.setAge(age);
         personCreated.setNickname(nickname);
@@ -27,7 +26,7 @@ public class QualitySet {
         personCreated.setEmail(email);
         personCreated.setGender(gender);
         personCreated.setId(UserInput.id);
-        System.out.println(UserInput.id);
+        System.out.println("ID: " + UserInput.id);
 
 
 

@@ -63,7 +63,7 @@ public class UserInput {
             Dancer dancer = new Dancer(name, lastName, groupName);
             dancer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(id,designation, email, gender, nickname, age, dancer);
+            set.setPerson(designation, email, gender, nickname, age, dancer);
             DancerActionServiceImpl dancerPerson = (DancerActionServiceImpl) PersonFactory.getPersonType(dancer);
             dancerPerson.all();
             id++;
@@ -97,7 +97,7 @@ public class UserInput {
             Singer singer = new Singer(name, lastName, bandName);
             singer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(id,designation, email, gender, nickname, age, singer);
+            set.setPerson(designation, email, gender, nickname, age, singer);
             SingerActionServiceImpl singerPerson = (SingerActionServiceImpl) PersonFactory.getPersonType(singer);
             singerPerson.all();
             id++;
@@ -133,7 +133,7 @@ public class UserInput {
             Programmer programmer = new Programmer(name, lastName, companyName);
             programmer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(id,designation, email, gender, nickname, age, programmer);
+            set.setPerson(designation, email, gender, nickname, age, programmer);
             ProgrammerActionServiceImpl programmerPerson = (ProgrammerActionServiceImpl) PersonFactory.getPersonType(programmer);
             programmerPerson.all();
             id++;
