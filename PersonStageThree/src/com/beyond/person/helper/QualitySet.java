@@ -19,13 +19,15 @@ public class QualitySet {
      * @param nickname
      * @param age
      */
-    public void setPerson(String designation, String email,
+    public void setPerson(int id, String designation, String email,
                           String gender, String nickname, String age, BasePerson personCreated) throws ValidationException {
         personCreated.setAge(age);
         personCreated.setNickname(nickname);
         personCreated.setDesignation(designation);
         personCreated.setEmail(email);
         personCreated.setGender(gender);
+        personCreated.setId(UserInput.id);
+        System.out.println(UserInput.id);
 
 
 

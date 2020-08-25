@@ -11,6 +11,8 @@ public class BasePerson {
     protected Gender gender;
     protected String designation;
     protected int age;
+    protected boolean removed;
+    protected int id;
     private final String emailRegex = "^(.+)@(.+)$";
 
     /**
@@ -52,6 +54,21 @@ public class BasePerson {
         return age;
     }
 
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setNickname(String nickname) throws ValidationException {
 

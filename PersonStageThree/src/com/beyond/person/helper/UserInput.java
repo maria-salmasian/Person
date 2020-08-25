@@ -1,6 +1,7 @@
 package com.beyond.person.helper;
 
 import com.beyond.person.core.exception.ValidationException;
+import com.beyond.person.core.model.BasePerson;
 import com.beyond.person.core.model.Dancer;
 import com.beyond.person.core.model.Programmer;
 import com.beyond.person.core.model.Singer;
@@ -10,12 +11,11 @@ import com.beyond.person.core.service.impl.ProgrammerActionServiceImpl;
 import com.beyond.person.core.service.impl.SingerActionServiceImpl;
 import com.beyond.person.helper.enumerations.InputChoice;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInput {
     Scanner enter = new Scanner(System.in);
-
+    public static int id = 1;
     /**
      * method for creating the person needed and preforming the actions needed
      *
@@ -25,18 +25,18 @@ public class UserInput {
      */
 
 
-    public void userInput(InputChoice choice, String name, String lastName) {
+    public BasePerson userInput(InputChoice choice, String name, String lastName) {
         if (choice.equals(InputChoice.DANCER)) {
             Dancer dancer = dancerInput(name, lastName);
-
+            return dancer;
         } else if (choice.equals(InputChoice.SINGER)) {
             Singer singer = singerInput(name, lastName);
-
+            return singer;
         } else if (choice.equals(InputChoice.PROGRAMMER)) {
             Programmer programmer = programmerInput(name, lastName);
-
+            return programmer;
         }
-
+        return null;
     }
 
 
@@ -63,9 +63,10 @@ public class UserInput {
             Dancer dancer = new Dancer(name, lastName, groupName);
             dancer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(designation, email, gender, nickname, age, dancer);
+            set.setPerson(id,designation, email, gender, nickname, age, dancer);
             DancerActionServiceImpl dancerPerson = (DancerActionServiceImpl) PersonFactory.getPersonType(dancer);
             dancerPerson.all();
+            id++;
             return dancer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
@@ -96,9 +97,10 @@ public class UserInput {
             Singer singer = new Singer(name, lastName, bandName);
             singer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(designation, email, gender, nickname, age, singer);
+            set.setPerson(id,designation, email, gender, nickname, age, singer);
             SingerActionServiceImpl singerPerson = (SingerActionServiceImpl) PersonFactory.getPersonType(singer);
             singerPerson.all();
+            id++;
             return singer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
@@ -113,6 +115,7 @@ public class UserInput {
      * @param lastName
      */
     private Programmer programmerInput(String name, String lastName) {
+        int id = 0;
         System.out.println("Nickname:");
         String nickname = enter.nextLine();
         System.out.println("Gender: 1) female 2) male");
@@ -125,13 +128,15 @@ public class UserInput {
         String designation = enter.nextLine();
         System.out.println("What company does the programmer work for");
         String companyName = enter.nextLine();
+        id++;
         try {
             Programmer programmer = new Programmer(name, lastName, companyName);
             programmer.setDesignation(designation);
             QualitySet set = new QualitySet();
-            set.setPerson(designation, email, gender, nickname, age, programmer);
+            set.setPerson(id,designation, email, gender, nickname, age, programmer);
             ProgrammerActionServiceImpl programmerPerson = (ProgrammerActionServiceImpl) PersonFactory.getPersonType(programmer);
             programmerPerson.all();
+            id++;
             return programmer;
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
