@@ -7,6 +7,8 @@ import com.beyond.person.core.model.Singer;
 import com.beyond.person.helper.enumerations.InputChoice;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,7 @@ public class Repository {
     public List<BasePerson> typePersons;
     public List<BasePerson> typeAndActivePersons;
     public List<BasePerson> typeAndRemovedPersons;
+    public List<String> uniqueNames;
 
     public Repository() {
         persons = new ArrayList<>();
@@ -26,11 +29,29 @@ public class Repository {
         typePersons = new ArrayList<>();
         typeAndActivePersons = new ArrayList<>();
         typeAndRemovedPersons = new ArrayList<>();
+        uniqueNames = new ArrayList<>();
     }
 
     public List<BasePerson> findAllPersons() {
         return persons;
     }
+
+
+    public List<BasePerson> naturallySorted() {
+        Collections.sort(persons);
+        naturallySorted().stream().map(s -> s.getName()).forEach(System.out::print);
+        return naturallySorted();
+    }
+
+    public List<BasePerson> notNaturallySorted() {
+        Collections.sort(persons, (Comparator.<BasePerson>
+                comparingInt(p1 -> p1.getName().length())
+                .thenComparingInt(p2 -> p2.getName().length())));
+        naturallySorted().stream().map(s -> s.getName()).forEach(System.out::print);
+
+        return notNaturallySorted();
+    }
+
 
     public void removeById(int id) {
         persons.stream().filter(p -> p.getId() == id).collect(Collectors.toList())
@@ -113,4 +134,13 @@ public class Repository {
         }
         return typePersons;
     }
+
+    public List<String> getAllUniqueNames() {
+        persons.stream().map(p -> p.getName()).collect(Collectors.toList()).forEach(x ->
+                getAllUniqueNames().add(x));
+
+        return getAllUniqueNames();
+    }
+
+
 }

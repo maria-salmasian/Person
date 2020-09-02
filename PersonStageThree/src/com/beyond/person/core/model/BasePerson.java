@@ -3,7 +3,7 @@ package com.beyond.person.core.model;
 import com.beyond.person.core.exception.*;
 import com.beyond.person.core.utils.enumeration.Gender;
 
-public class BasePerson {
+public class BasePerson implements Comparable<BasePerson>{
     protected String name;
     protected String lastName;
     protected String nickname;
@@ -199,5 +199,11 @@ public class BasePerson {
         if (0 < string.length() && string.length() < 255)
             checked = true;
         return checked;
+    }
+
+
+    @Override
+    public int compareTo(BasePerson o) {
+        return this.getName().compareTo(o.getName());
     }
 }
