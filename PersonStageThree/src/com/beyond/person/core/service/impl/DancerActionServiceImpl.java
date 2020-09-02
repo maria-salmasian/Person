@@ -48,6 +48,10 @@ public class DancerActionServiceImpl implements DancerActionService {
 
     }
 
+    @Override
+    public void action() throws ValidationException {
+        dancing();
+    }
 
     @Override
     public void all() throws ValidationException {

@@ -15,19 +15,74 @@ public class BasePerson {
     protected int id;
     private final String emailRegex = "^(.+)@(.+)$";
 
-    /**
-     * constructor for base person
-     *
-     * @param name
-     * @param lastName
-     */
+
+    public static class BasePersonBuilder {
+        private String name;
+        private String lastName;
+        private String nickname;
+        private String email;
+        private String gender;
+        private String designation;
+        private String age;
+
+
+        public BasePersonBuilder(String name, String lastName) throws ValidationException {
+            this.name = name;
+            this.lastName = lastName;
+        }
+
+        public BasePersonBuilder withNickname(String nickname) throws ValidationException {
+            this.nickname = nickname;
+            return this;
+        }
+
+        public BasePersonBuilder withEmail(String email) throws ValidationException {
+            this.email = email;
+            return this;
+        }
+
+        public BasePersonBuilder withGender(String gender) throws ValidationException {
+            this.gender = gender;
+            return this;
+        }
+
+        public BasePersonBuilder withDesignation(String designation) throws ValidationException {
+            this.designation = designation;
+            return this;
+        }
+
+        public BasePersonBuilder withAge(String age) throws ValidationException {
+            this.age = age;
+            return this;
+        }
+
+
+        public BasePerson buildBasePerson() throws ValidationException {
+            BasePerson basePerson = new BasePerson();
+            basePerson.setName(name);
+            basePerson.setLastName(lastName);
+            basePerson.setGender(gender);
+            basePerson.setDesignation(designation);
+            basePerson.setEmail(email);
+            basePerson.setNickname(nickname);
+            basePerson.setAge(age);
+
+            return basePerson;
+        }
+
+
+    }
+
+
+    BasePerson() {
+    }
+
+
     public BasePerson(String name, String lastName) throws ValidationException {
         if (lengthCheck(name) && lengthCheck(lastName)) {
             this.name = name;
             this.lastName = lastName;
-        } else {
-            throw new ValidationException("Invalid Name or Surname");
-        }
+        } else throw new ValidationException("Invalid name or surname");
     }
 
     public String getName() {
@@ -64,6 +119,19 @@ public class BasePerson {
 
     public int getId() {
         return id;
+    }
+
+
+    public void setName(String name) throws ValidationException {
+        if (lengthCheck(name))
+            this.name = name;
+        else throw new ValidationException("Invalid Name or Surname");
+    }
+
+    public void setLastName(String lastName) throws ValidationException {
+        if (lengthCheck(lastName))
+            this.lastName = lastName;
+        else throw new ValidationException("Invalid Name or Surname");
     }
 
     public void setId(int id) {
@@ -132,5 +200,4 @@ public class BasePerson {
             checked = true;
         return checked;
     }
-
 }

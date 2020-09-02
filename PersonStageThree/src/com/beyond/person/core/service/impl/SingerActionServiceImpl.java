@@ -48,6 +48,11 @@ public class SingerActionServiceImpl implements SingerActionService {
     }
 
     @Override
+    public void action() throws ValidationException {
+        singing();
+    }
+
+    @Override
     public void all() throws ValidationException {
         learn();
         eat();

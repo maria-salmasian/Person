@@ -44,6 +44,10 @@ public class ProgrammerActionServiceImpl implements ProgrammerActionService {
         System.out.println(programmer.getName() + " works as " + (EngineerType.getById(Integer.parseInt(programmer.getDesignation()))).name().toLowerCase() + " engineer at " + programmer.getCompanyName() + " Codes after learning");
     }
 
+    @Override
+    public void action() throws ValidationException {
+        coding();
+    }
 
     @Override
     public void all() throws ValidationException {
